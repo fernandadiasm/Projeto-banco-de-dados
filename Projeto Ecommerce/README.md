@@ -17,3 +17,6 @@ Pedido:
 - Os pedidos são criados por clientes e possuem informações de compra, endereço e status da entrega.
 - Um produto ou mais compoem o pedido.
 - O pedido pode ser cancelado.
+
+### Resultado da modelagem: 
+![projeto ecommerce](https://user-images.githubusercontent.com/112582162/188933639-a3186dd1-6c74-47ad-8d07-cc6cfc3dcace.png)
