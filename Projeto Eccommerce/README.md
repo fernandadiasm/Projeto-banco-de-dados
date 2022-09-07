@@ -3,7 +3,7 @@ Realizar a modelagem de dados de um Ecommerce com base na narrativa dos produtos
 
 ### Narrativas:
 Produto:
-- vendo por uma única plataforma online.
+- Vendo por uma única plataforma online.
 - Não pode ser vendido por terceiros.
 - Cada produto possui um fornecedor.
 - Um ou mais produtos podem compor um pedido.
