@@ -12,3 +12,6 @@ Realizar a modelagem de dados de um sistema de controle e gerenciamento de execu
 - Cada ordem de serviço possui: número, data de emissão, valor, status e uma data para conclusão dos trabalhos.
 - Uma ordem de serviço pode ser composta por vários serviços e um mesmo serviço pode estar contido em mais de uma ordem de serviço.
 - Uma ordem de serviços pode ter vários tipos de peça e uma peça pode estar presente em mais de uma ordem de serviço.
+
+### Resultado da modelagem:
+![projeto oficina](https://user-images.githubusercontent.com/112582162/188933203-33be95ba-119b-45be-aebf-a8f19cd7b48e.png)
