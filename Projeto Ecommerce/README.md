@@ -19,4 +19,4 @@ Pedido:
 - O pedido pode ser cancelado.
 
 ### Resultado da modelagem: 
-![projeto ecommerce](https://user-images.githubusercontent.com/112582162/188933639-a3186dd1-6c74-47ad-8d07-cc6cfc3dcace.png)
+![projeto ecommerce refinado](https://user-images.githubusercontent.com/112582162/189448250-84c35cbd-64a9-4624-8540-a9a8efd05b04.png)
