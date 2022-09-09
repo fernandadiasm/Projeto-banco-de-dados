@@ -4,7 +4,6 @@ create database ecommerce;
 use ecommerce;
 
 -- tabela de cliente
--- autoincrementação gera um id automático
 create table clients (
 	idClient int auto_increment primary key,
     email varchar(30),
@@ -15,8 +14,6 @@ create table clients (
     date_of_birthday date not null,
     gender char(5) check (gender in ('F','M','Outro')),
     phone_number int,
-    created_at timestamp,
-    modified_at timestamp,
     constraint unique_cpf_client unique (CPF)
 );
 
@@ -27,40 +24,42 @@ create table client_address(
     idClient int,
     address_line1 varchar(10) not null,
     address_line2 varchar(10),
-    city varchar(10) not null,
     postal_Code varchar(10) not null,
+    city varchar(10) not null,
     country varchar(10) not null,
     constraint fk_client_address foreign key (idclient) references clients (idClient)
 );
 
-
+desc client_address;
 
 -- tabela de pagamento
 create table client_payment (
 	idpayment int auto_increment primary key,
     idClient int,
-    payment_type enum('Boleto','Cartão','Dois cartões', 'Pix'), 
-    Payment_value decimal (5,2),
+    payment_type enum('Boleto','Cartão','Dois cartões', 'Pix') default 'Boleto' not null, 
+    payment_value decimal (5,2),
 	constraint fk_client foreign key (idclient) references clients (idClient)
     );
     
     desc client_payment;
     
 -- tabela produto
--- size equivale a dimensão do produto
 create table product (
 	idProduct int auto_increment primary key,
+    idSupplier int,
     name_product varchar(30) not null,
     classification_kids bool default false,
     category enum('Eletrônico','Vestimenta','Brinquedo','Livro','Alimento','Móveis') not null,
+    product_value decimal (5,2),
     evaluation float default 0, 
     size varchar(10),
     constraint unique_cpf_client unique (CPF)
+    constraint fk_supplier foreign key (idSupplier) references supplier(idSupplier).
 );
 
 
 -- tabela pedido
-create table productorder (
+create table orders (
 	idOrder int auto_increment primary key,
     idOrderClient int,
     orderStatus enum('Cancelado','Confirmado','Em processamento') default 'Em processamento' not null,
@@ -109,16 +108,18 @@ create table productseller (
     constraint fk_product_product foreign key (idProduct) references seller(idproduct)
 );
 
+-- tabela produto/pedido
 create table product_order(
 	idPOproduct int,
-    idPOordert int, 
-    po_quantify int default 1,
-    po_status enum ('Disponível', 'Em falta') default 'Disponível',
+    idPOorder int, 
+    po_quantify int default 1 not null,
+    po_status enum ('Disponível', 'Indisponível') default 'Disponível' not null,
     primary key (idPOproduct, idPOorder),
     constraint fk_productorder_seller foreign key (idPOpodruct) references product(idProduct),
     constraint fk_productorder_product foreign key (idPOorder) references productorder(idOrder)
 );
 
+-- tabela estoque
 create table storagelocation (
 	idLproduct int,
     idLstorage int,
