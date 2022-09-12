@@ -8,39 +8,44 @@ use ecommerce;
 create table clients (
 	idClient int auto_increment primary key,
     email varchar(30),
-    first_name varchar(30) not null,
-    middle_name varchar(30),
-    last_name varchar(30) not null,
-    CPF char(11) not null,
-    date_of_birthday date not null,
-    gender char(5) check (gender in ('F','M','Outro')),
     phone_number varchar(9),
-    constraint unique_cpf_client unique (CPF)
-);
-
-alter table clients auto_increment=1;
-
-desc clients;
-
--- tabela de endereço do cliente
-create table client_address(
-	idAddress int auto_increment primary key, 
-    idClient int,
-    address_line1 varchar(10) not null,
+	address_line1 varchar(10) not null,
     address_line2 varchar(10),
     postal_Code varchar(10) not null,
     city varchar(15) not null,
-    country varchar(10) not null,
-    constraint fk_client_address foreign key (idclient) references clients (idClient)
+    country varchar(10) not null
 );
+alter table clients auto_increment=1;
+
+create table physical_clients (
+	first_name varchar(30) not null,
+    middle_name varchar(30),
+    last_name varchar(30) not null,
+	CPF char(11) not null,
+    date_of_birthday date not null,
+    gender char(5) check (gender in ('F','M','Outro')),
+    constraint unique_cpf_physical_clients unique (CPF)
+);
+
+create table legal_clients (
+	idlegalclients int,
+    id_clients int,
+    social_name varchar (255) not null,
+    CNPJ char(15) not null,
+     constraint unique_CNPJ_legal_clients unique (CNPJ)
+);
+
+
+
+desc clients;
+
 
 ALTER TABLE client_address
 CHANGE city city VARCHAR(15);
 
-desc client_address;
 
 -- tabela de pagamento
-create table client_payment (
+create table clients_payment (
 	idpayment int auto_increment primary key,
     idClient int,
     payment_type enum('Boleto','Cartão','Dois cartões', 'Pix') default 'Boleto' not null, 
@@ -78,7 +83,7 @@ create table orders (
     send_value float default 10,
 	payment_cash bool default false,
     constraint fk_orders_client foreign key (idOrderClient) references clients(idClient),
-     constraint fk_client_payment foreign key (idpayment) references client_payment(idpayment)
+     constraint fk_clients_payment foreign key (idpayment) references clients_payment(idpayment)
 );
 
 -- tabela estoque
@@ -101,7 +106,6 @@ create table supplier (
 create table seller (
 	idseller int auto_increment primary key,
     social_name varchar (255) not null,
-    abs_name varchar(255),
     CNPJ char(15) not null,
     contact char(11) not null,
     location varchar(255),
