@@ -4,6 +4,7 @@ create database ecommerce;
 use ecommerce;
 
 -- tabela de cliente
+-- autoincrementação gera um id automático
 create table clients (
 	idClient int auto_increment primary key,
     email varchar(30),
@@ -13,10 +14,13 @@ create table clients (
     CPF char(11) not null,
     date_of_birthday date not null,
     gender char(5) check (gender in ('F','M','Outro')),
-    phone_number int,
+    phone_number varchar(9),
     constraint unique_cpf_client unique (CPF)
 );
 
+alter table clients auto_increment=1;
+
+desc clients;
 
 -- tabela de endereço do cliente
 create table client_address(
@@ -25,10 +29,13 @@ create table client_address(
     address_line1 varchar(10) not null,
     address_line2 varchar(10),
     postal_Code varchar(10) not null,
-    city varchar(10) not null,
+    city varchar(15) not null,
     country varchar(10) not null,
     constraint fk_client_address foreign key (idclient) references clients (idClient)
 );
+
+ALTER TABLE client_address
+CHANGE city city VARCHAR(15);
 
 desc client_address;
 
@@ -41,9 +48,13 @@ create table client_payment (
 	constraint fk_client foreign key (idclient) references clients (idClient)
     );
     
+    ALTER TABLE client_payment
+CHANGE payment_value payment_value decimal;
+    
     desc client_payment;
     
 -- tabela produto
+-- size equivale a dimensão do produto
 create table product (
 	idProduct int auto_increment primary key,
     idSupplier int,
@@ -53,8 +64,7 @@ create table product (
     product_value decimal (5,2),
     evaluation float default 0, 
     size varchar(10),
-    constraint unique_cpf_client unique (CPF)
-    constraint fk_supplier foreign key (idSupplier) references supplier(idSupplier).
+    constraint fk_supplier foreign key (idSupplier) references supplier(idSupplier)
 );
 
 
@@ -62,10 +72,11 @@ create table product (
 create table orders (
 	idOrder int auto_increment primary key,
     idOrderClient int,
-    orderStatus enum('Cancelado','Confirmado','Em processamento') default 'Em processamento' not null,
-    orderDescription varchar(255),
-    sendValue float default 10,
-	paymentCash bool default false,
+    idpayment int,
+    order_status enum('Cancelado','Confirmado','Em processamento') default 'Em processamento' not null,
+    order_description varchar(255),
+    send_value float default 10,
+	payment_cash bool default false,
     constraint fk_orders_client foreign key (idOrderClient) references clients(idClient),
      constraint fk_client_payment foreign key (idpayment) references client_payment(idpayment)
 );
@@ -94,9 +105,11 @@ create table seller (
     CNPJ char(15) not null,
     contact char(11) not null,
     location varchar(255),
-    constraint unique_cnpj_seller unique (CNPJ),
-    constraint unique_cpf_seller unique (CPF)
+    constraint unique_cnpj_seller unique (CNPJ)
     );
+    
+    drop table seller;
+    desc seller;
 
 -- tabela produtos/vendedor
 create table productseller (
@@ -104,22 +117,20 @@ create table productseller (
     idProduct int,
     prod_quantify int default 1,
     primary key (idPseller, idProduct),
-    constraint fk_product_seller foreign key (idPSeller) references seller(idSeller),
-    constraint fk_product_product foreign key (idProduct) references seller(idproduct)
+    constraint fk_productseller foreign key (idPSeller) references seller(idSeller),
+    constraint fk_product foreign key (idProduct) references product(idproduct)
 );
 
--- tabela produto/pedido
 create table product_order(
-	idPOproduct int,
+	idProductOrder int,
     idPOorder int, 
     po_quantify int default 1 not null,
     po_status enum ('Disponível', 'Indisponível') default 'Disponível' not null,
-    primary key (idPOproduct, idPOorder),
-    constraint fk_productorder_seller foreign key (idPOpodruct) references product(idProduct),
-    constraint fk_productorder_product foreign key (idPOorder) references productorder(idOrder)
+    primary key (idProductOrder, idPOorder),
+    constraint fk_productorder_seller foreign key (idProductOrder) references product(idProduct),
+    constraint fk_productorder_product foreign key (idPOorder) references orders(idOrder)
 );
 
--- tabela estoque
 create table storagelocation (
 	idLproduct int,
     idLstorage int,
