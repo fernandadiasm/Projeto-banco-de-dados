@@ -3,7 +3,7 @@ Realizar a modelagem de dados de um Ecommerce com base na narrativa dos produtos
 
 ### Narrativas:
 Produto:
-- Vendo por uma única plataforma online.
+- Vendido por uma única plataforma online.
 - Não pode ser vendido por terceiros.
 - Cada produto possui um fornecedor.
 - Um ou mais produtos podem compor um pedido.
@@ -19,4 +19,6 @@ Pedido:
 - O pedido pode ser cancelado.
 
 ### Resultado da modelagem: 
-![projeto ecommerce refinado](https://user-images.githubusercontent.com/112582162/189448250-84c35cbd-64a9-4624-8540-a9a8efd05b04.png)
+
+![projeto ecommerce refinado](https://user-images.githubusercontent.com/112582162/189964196-4bca6ad6-ef71-4019-98af-fe3d729bb395.png)
+
