@@ -6,10 +6,10 @@ show tables;
 
 
 -- clients
-insert into clients (email,phone_number,address_line1,address_line2,postal_code,city,country,CPF/CNPJ) values
-				('fernandadias.bio@hotmail.com','123456701','Rua A','número 36','21220222','Rio de Janeiro','Brasil','984756389281736'),
-				('ramomferraz@hotmail.com','123456910','Rua A','número 36','21223322','Rio de Janeiro','Brasil','184756398756402'),
-				('maria@hotmail.com','345678910','Rua D',null,'21220782','Santa Catarina','Brasil','194857643890');
+insert into clients (first_name,middle_name,last_name,email,phone_number,address_line1,address_line2,postal_code,city,country,CPF/CNPJ) values
+				('Fernanda','Dias','Menezes','fernandadias.bio@hotmail.com','123456701','Rua A','número 36','21220222','Rio de Janeiro','Brasil','984756389281736'),
+				('Ramom', 'Ferraz', 'Dias','ramomferraz@hotmail.com','123456910','Rua A','número 36','21223322','Rio de Janeiro','Brasil','184756398756402'),
+				('Maria',null,'Dias','maria@hotmail.com','345678910','Rua D',null,'21220782','Santa Catarina','Brasil','194857643890');
 
 
 -- clients_payment
