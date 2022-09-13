@@ -4,30 +4,12 @@ use ecommerce;
 
 show tables;
 
--- clients
-insert into clients (email,phone_number,address_line1,address_line2,postal_code,city,country) values
-				('fernandadias.bio@hotmail.com','123456701','Rua A','número 36','21220222','Rio de Janeiro','Brasil'),
-				('ramomferraz@hotmail.com','123456910','Rua A','número 36','21223322','Rio de Janeiro','Brasil'),
-				('maria@hotmail.com','345678910','Rua D',null,'21220782','Santa Catarina','Brasil');
-        
-        
-        
--- physical_clients
-insert into  physical_clients(first_name,middle_name,last_name,CPF,date_of_birthday,gender) values
-			       ('Fernanda','Dias','Menezes','12345678910','1997-06-27','F'),
-                               ('Ramom','Ferraz','Dias','12345678654','1900-04-27','M'),
-                               ('Maria',null,'Borges','98746372850','2000-08-22','F');
- select * from physical_clients; 
- 
- 
- 
- -- legal_clients
-insert into legal_clients(social_name,CNPJ) values
-				('Empresa MillaSakura LTDA','984756389281736'),
-				('Companhia das Letras','184756398756402'),
-				('Rocco Jovens Leitores','194857643890');
-select * from legal_clients;
 
+-- clients
+insert into clients (email,phone_number,address_line1,address_line2,postal_code,city,country,CPF/CNPJ) values
+				('fernandadias.bio@hotmail.com','123456701','Rua A','número 36','21220222','Rio de Janeiro','Brasil','984756389281736'),
+				('ramomferraz@hotmail.com','123456910','Rua A','número 36','21223322','Rio de Janeiro','Brasil','184756398756402'),
+				('maria@hotmail.com','345678910','Rua D',null,'21220782','Santa Catarina','Brasil','194857643890');
 
 
 -- clients_payment
