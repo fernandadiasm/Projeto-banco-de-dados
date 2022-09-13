@@ -7,8 +7,11 @@ use ecommerce;
 -- autoincrementação gera um id automático
 create table clients (
 	idClient int auto_increment primary key,
-    email varchar(30),
-    phone_number varchar(9),
+	first_name varchar(15) not null,
+	middle_name varchar(15),
+	last_name varchar(15) not null,
+  	email varchar(30),
+    	phone_number varchar(9),
 	address_line1 varchar(10) not null,
     address_line2 varchar(10),
     postal_Code varchar(10) not null,
