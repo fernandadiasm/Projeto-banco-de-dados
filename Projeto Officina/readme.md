@@ -14,4 +14,4 @@ Realizar a modelagem de dados de um sistema de controle e gerenciamento de execu
 - Uma ordem de serviços pode ter vários tipos de peça e uma peça pode estar presente em mais de uma ordem de serviço.
 
 ### Resultado da modelagem:
-![projeto oficina](https://user-images.githubusercontent.com/112582162/188933203-33be95ba-119b-45be-aebf-a8f19cd7b48e.png)
+![projeto officina](https://user-images.githubusercontent.com/112582162/190026423-a2a83a99-9410-430b-8510-f422d5c9bfbd.png)
