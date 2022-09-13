@@ -13,36 +13,11 @@ create table clients (
     address_line2 varchar(10),
     postal_Code varchar(10) not null,
     city varchar(15) not null,
-    country varchar(10) not null
+    country varchar(10) not null,
+    CPF/CNPJ varchar(15) not null
 );
+
 alter table clients auto_increment=1;
-
-create table physical_clients (
-	first_name varchar(30) not null,
-    middle_name varchar(30),
-    last_name varchar(30) not null,
-	CPF char(11) not null,
-    date_of_birthday date not null,
-    gender char(5) check (gender in ('F','M','Outro')),
-    constraint unique_cpf_physical_clients unique (CPF)
-);
-
-create table legal_clients (
-	idlegalclients int,
-    id_clients int,
-    social_name varchar (255) not null,
-    CNPJ char(15) not null,
-     constraint unique_CNPJ_legal_clients unique (CNPJ)
-);
-
-
-
-desc clients;
-
-
-ALTER TABLE client_address
-CHANGE city city VARCHAR(15);
-
 
 -- tabela de pagamento
 create table clients_payment (
