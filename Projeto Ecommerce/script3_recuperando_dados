@@ -1,0 +1,23 @@
+use ecommerce;
+
+-- view 1: clientes e seus tipos de pagamentos
+select * from clients;
+select * from clients_payment;
+select * from product;
+
+select concat(first_name, ' ', last_name) as name_client, payment_type from clients, clients_payment;
+
+-- view 2: clientes e suas respectivas compras com valor e nome do produto
+select concat(first_name, ' ', last_name) as name_client, name_product, product_value from clients, product;
+
+-- view 3: pedidos
+select * from orders;
+
+-- view 4: status dos pedidos e tipo de compra de cada client
+select concat(first_name, ' ', last_name) as name_client, order_status, order_description from clients, orders;
+
+-- view 5: agrupando a cidade de cada cliente
+select city, count(*) from clients group by city having count(*)>2;
+
+-- view 6: ordenando os preços dos produtos
+select * from product order product_value;
