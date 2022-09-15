@@ -1,5 +1,5 @@
 
-## Contrução de um projeto lógido de banco de dados do zero via SQL
+## Contrução de projetos lógidos de banco de dados do zero via SQL
 
 
 ## Objetivo de projeto
