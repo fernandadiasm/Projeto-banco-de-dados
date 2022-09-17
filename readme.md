@@ -20,7 +20,7 @@ Para desenvolver o projeto utilizei o sistema de gerenciamento de banco de dados
 
 
 <p align="center">
-🚧 Projeto 🚀 Em progresso.. 🚧
+🚧 Projeto em progresso.. 🚧
 </p>
 
 
